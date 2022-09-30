@@ -53,6 +53,7 @@ export function activate(context: vscode.ExtensionContext) {
 			newContents += lineContentTmp + '\n';
 		}
 
+		let tmpSelection = editor.selection;
 		// identify whether a region is selected, if no selected create a selection has all contents
 		/* let selection = editor.selection;
 		if(selection?.start.line===selection?.end.line && selection?.start.character===selection?.end.character) {
@@ -64,7 +65,11 @@ export function activate(context: vscode.ExtensionContext) {
 			editBuilder.replace(new vscode.Range(selection?.start, selection?.end), newContents);
 		});
 		// set the cusor position
-		editor.selection = new vscode.Selection(0, 0, 0, 0);
+		editor.selection = new vscode.Selection(
+			tmpSelection.start.line, 
+			editor.document.lineAt(tmpSelection.start.line).text.length + 100, 
+			tmpSelection.end.line, 
+			editor.document.lineAt(tmpSelection.start.line).text.length + 100); // new vscode.Selection(0, 0, 0, 0);
 		vscode.window.showInformationMessage('The title number was added successfully！');
 	});
 

@@ -1,7 +1,7 @@
 # FreeMarkdownIndex for [Visual Studio Code](http://code.visualstudio.com)
 
 A extension for vscode to add markdown document title ordinals automatically. Which is easy to use.
-![FreeMarkdownIndex](https://dachuiopensource.gitee.io/jofendrawingbed/opensource/freemap.gif)
+![FreeMarkdownIndex](https://dachuiopensource.gitee.io/jofendrawingbed/01_technology/fronttech/vscode/FreeMarkdownIndex/FreeMarkdownIndexOne.gif)
 
 ## Features
 
