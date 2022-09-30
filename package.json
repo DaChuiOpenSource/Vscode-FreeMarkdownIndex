@@ -1,10 +1,10 @@
 {
-	"name": "FreeMarkdownIndex",
+	"name": "freemarkdownindex",
+	"version": "0.2.1",
+	"publisher": "DaChuiOpenSource",
 	"displayName": "FreeMarkdownIndex",
 	"icon": "resources/icon.png",
-	"description": "Automatically add markdown document title ordinals",
-	"version": "0.1.0",
-	"publisher": "DaChuiOpenSource",
+	"description": "Automatically add markdown document title ordinals or indexs",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/DaChuiOpenSource/Vscode-FreeMarkdownIndex.git"
@@ -15,6 +15,7 @@
 	"categories": [
 		"Other"
 	],
+	"keywords": ["markdown", "markdownindex", "free", "addindex", "ordinals"],
 	"activationEvents": [
 		"onCommand:FreeMarkdownIndex.markdownAddIndex"
 	],

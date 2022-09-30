@@ -67,22 +67,25 @@ export class IndexHandler {
      */
     public addIndex(lineContent: string) {
         let flag: string;
+        // Second-level title index
         if(lineContent?.startsWith('## ')) {
             flag = '## ';
             lineContent = flag 
-                + this.indexMap.get('##') 
+                + this.indexMap.get('##') + '.'
                 + lineContent.substring(flag.trim().length);
         }
+        // Three-level title index
         else if(lineContent?.startsWith('### ')) {
             flag = '### ';
             lineContent = flag 
-                + this.indexMap.get('##') + '.' + this.indexMap.get('###') 
+                + this.indexMap.get('##') + '.' + this.indexMap.get('###') + '.'
                 + lineContent.substring(flag.trim().length);
         }
+        // Four-level title index
         else if(lineContent?.startsWith('#### ')) {
             flag = '#### ';
             lineContent = flag 
-                + this.indexMap.get('##') + '.' + this.indexMap.get('###') + '.' + this.indexMap.get('####') 
+                + this.indexMap.get('##') + '.' + this.indexMap.get('###') + '.' + this.indexMap.get('####') + '.' 
                 + lineContent.substring(flag.trim().length);
         }
 
