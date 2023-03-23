@@ -4,6 +4,10 @@ All notable changes to the "FreeMarkdownIndex" extension will be documented in t
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.3.1]
+### changed
+- Add two sapces at the end of content's line. 
+
 ## [0.2.1]
 ### changed
 - Add a comma after the each title index. 

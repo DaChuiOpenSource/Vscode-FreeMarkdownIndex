@@ -2,12 +2,12 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import {TextEditor} from "vscode";
-import { IndexHandler } from './core/IndexHandler';
+import {IndexHandler} from './core/IndexHandler';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	
+
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "FreeMarkdownIndex" is now active!');
@@ -20,18 +20,18 @@ export function activate(context: vscode.ExtensionContext) {
 		// Display a message box to the user
 		//vscode.window.showInformationMessage('Hello World from FreeMarkdownIndex!');
 		const editor: TextEditor | undefined = vscode.window.activeTextEditor;
-		if (!editor) {
-            vscode.window.showInformationMessage('No open text editor');
-            return; // No open text editor
-        }
+		if(!editor) {
+			vscode.window.showInformationMessage('No open text editor');
+			return; // No open text editor
+		}
 		const document: vscode.TextDocument | undefined = editor?.document;
-        if (document.languageId !== 'markdown') {
-            vscode.window.showInformationMessage('Unsupported file type');
-            return; // Unsupported file type
-        }
+		if(document.languageId !== 'markdown') {
+			vscode.window.showInformationMessage('Unsupported file type');
+			return; // Unsupported file type
+		}
 
 		// get line numbers of the document of active editor
-		let lineNums: number|undefined = document?.lineCount;
+		let lineNums: number | undefined = document?.lineCount;
 		if(lineNums === undefined || lineNums === 0) {
 			vscode.window.showInformationMessage('No lines in the editor');
 			return;
@@ -39,7 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		let indexHandler = new IndexHandler();
 		let newContents = '';
-		for (let index = 0; index < lineNums; index++) {
+		for(let index = 0; index < lineNums; index++) {
 			// per line content
 			let lineContent = document?.lineAt(index).text;
 			// record the index ordinal datas
@@ -50,7 +50,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 			// add index
 			lineContentTmp = indexHandler.addIndex(lineContentTmp);
-			newContents += lineContentTmp + '\n';
+			if(lineContentTmp?.trim()) {
+				newContents += lineContentTmp + '\n';
+			}
 		}
 
 		let tmpSelection = editor.selection;
@@ -66,9 +68,9 @@ export function activate(context: vscode.ExtensionContext) {
 		});
 		// set the cusor position
 		editor.selection = new vscode.Selection(
-			tmpSelection.start.line, 
-			editor.document.lineAt(tmpSelection.start.line).text.length + 100, 
-			tmpSelection.end.line, 
+			tmpSelection.start.line,
+			editor.document.lineAt(tmpSelection.start.line).text.length + 100,
+			tmpSelection.end.line,
 			editor.document.lineAt(tmpSelection.start.line).text.length + 100); // new vscode.Selection(0, 0, 0, 0);
 		vscode.window.showInformationMessage('The title number was added successfully！');
 	});

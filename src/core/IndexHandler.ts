@@ -8,10 +8,10 @@ export class IndexHandler {
 
     constructor() {
         // init the index recorder datas
-		this.indexMap.set('#', 0);
-		this.indexMap.set('##', 0);
-		this.indexMap.set('###', 0);
-		this.indexMap.set('####', 0);
+        this.indexMap.set('#', 0);
+        this.indexMap.set('##', 0);
+        this.indexMap.set('###', 0);
+        this.indexMap.set('####', 0);
     }
 
     /**
@@ -20,18 +20,18 @@ export class IndexHandler {
      */
     public indexRecord(lineContent: string) {
         if(lineContent.startsWith('# ')) {
-            this.indexMap.set('# '.trim(), 1+this.indexMap.get('#'));
+            this.indexMap.set('# '.trim(), 1 + this.indexMap.get('#'));
         }
         else if(lineContent?.startsWith('## ')) {
-            this.indexMap.set('## '.trim(), 1+this.indexMap.get('##'));
+            this.indexMap.set('## '.trim(), 1 + this.indexMap.get('##'));
             this.indexMap.set('### '.trim(), 0); // reset ### count when ## was encountered
         }
         else if(lineContent?.startsWith('### ')) {
-            this.indexMap.set('### '.trim(), 1+this.indexMap.get('###'));
+            this.indexMap.set('### '.trim(), 1 + this.indexMap.get('###'));
             this.indexMap.set('#### '.trim(), 0); // reset ('#### count when ('### was encountered
         }
         else if(lineContent?.startsWith('#### ')) {
-            this.indexMap.set('#### '.trim(), 1+this.indexMap.get('####'));
+            this.indexMap.set('#### '.trim(), 1 + this.indexMap.get('####'));
             this.indexMap.set('##### '.trim(), 0); // reset ('#### count when ('### was encountered
         }
     }
@@ -45,10 +45,10 @@ export class IndexHandler {
         let lineContentTmp;
         if(lineContent.startsWith('#')) {
             let lineContentOfClear = new Array();
-            lineContent.split(' ').forEach((value, index)=>{
+            lineContent.split(' ').forEach((value, index) => {
                 // if only contains numbers and dots, continue
                 const regex = /^[0-9.]*$/;
-                if(!(index===1 && regex.test(value))) {
+                if(!(index === 1 && regex.test(value))) {
                     lineContentOfClear.push(value);
                 }
             });
@@ -70,26 +70,28 @@ export class IndexHandler {
         // Second-level title index
         if(lineContent?.startsWith('## ')) {
             flag = '## ';
-            lineContent = flag 
+            lineContent = flag
                 + this.indexMap.get('##') + '.'
                 + lineContent.substring(flag.trim().length);
         }
         // Three-level title index
         else if(lineContent?.startsWith('### ')) {
             flag = '### ';
-            lineContent = flag 
+            lineContent = flag
                 + this.indexMap.get('##') + '.' + this.indexMap.get('###') + '.'
                 + lineContent.substring(flag.trim().length);
         }
         // Four-level title index
         else if(lineContent?.startsWith('#### ')) {
             flag = '#### ';
-            lineContent = flag 
-                + this.indexMap.get('##') + '.' + this.indexMap.get('###') + '.' + this.indexMap.get('####') + '.' 
+            lineContent = flag
+                + this.indexMap.get('##') + '.' + this.indexMap.get('###') + '.' + this.indexMap.get('####') + '.'
                 + lineContent.substring(flag.trim().length);
+        } else if(!lineContent?.startsWith('#') && lineContent?.trim()) {
+            lineContent = lineContent.trim() + '  ';
         }
 
-        return lineContent; 
+        return lineContent;
     }
 
 }
