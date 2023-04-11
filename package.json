@@ -1,6 +1,6 @@
 {
 	"name": "freemarkdownindex",
-	"version": "0.3.1",
+	"version": "0.4.1",
 	"publisher": "DaChuiOpenSource",
 	"displayName": "FreeMarkdownIndex",
 	"icon": "resources/icon.png",
@@ -15,7 +15,13 @@
 	"categories": [
 		"Other"
 	],
-	"keywords": ["markdown", "markdownindex", "free", "addindex", "ordinals"],
+	"keywords": [
+		"markdown",
+		"markdownindex",
+		"free",
+		"addindex",
+		"ordinals"
+	],
 	"activationEvents": [
 		"onCommand:FreeMarkdownIndex.markdownAddIndex"
 	],
@@ -25,6 +31,14 @@
 			{
 				"command": "FreeMarkdownIndex.markdownAddIndex",
 				"title": "AddIndexInMarkdown"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "FreeMarkdownIndex.markdownAddIndex",
+				"key": "ctrl+i",
+				"mac": "cmd+i",
+				"when": "editorTextFocus && resourceExtname==.md"
 			}
 		]
 	},

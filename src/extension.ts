@@ -49,10 +49,14 @@ export function activate(context: vscode.ExtensionContext) {
 			let lineContentTmp = indexHandler.clearIndexOfLine(lineContent);
 
 			// add index
+			//console.log('before:' + lineContentTmp);
 			lineContentTmp = indexHandler.addIndex(lineContentTmp);
-			if(lineContentTmp?.trim()) {
-				newContents += lineContentTmp + '\n';
-			}
+			//console.log('after:' + lineContentTmp);
+
+			// delete if to keep blank line in markdown
+			//if(lineContentTmp?.trim()) {
+			newContents += lineContentTmp + '\n';
+			//}
 		}
 
 		let tmpSelection = editor.selection;

@@ -32,4 +32,4 @@ A extension for vscode to add markdown document title ordinals automatically. Wh
 
 | Command                          | Description                    |
 | -------------------------------- |--------------------------------| 
-| AddIndexInMarkdown | Automatically add markdown document title ordinals |
+| cmd + i(mac) / ctrl + i(windows) | Automatically add markdown document title ordinals |

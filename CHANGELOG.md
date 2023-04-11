@@ -4,6 +4,11 @@ All notable changes to the "FreeMarkdownIndex" extension will be documented in t
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.4.1]
+### changed
+- Keep blank lines.
+- Add shortcut ctrl+i(windows),cmd+i(mac)
+
 ## [0.3.1]
 ### changed
 - Add two sapces at the end of content's line. 
